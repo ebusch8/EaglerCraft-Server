@@ -1,0 +1,30 @@
+{
+  "name": "Minecraft Java Server",
+  "build": {
+    "dockerfile": "../Dockerfile",
+    "context": ".."
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        // Recommended extensions for working with Minecraft configurations.
+        "redhat.vscode-yaml",
+        "ms-vscode.live-server",
+        "streetsidesoftware.code-spell-checker"
+      ]
+    }
+  },
+  "remoteUser": "minecraft",
+  "forwardPorts": [
+    25565
+  ],
+  "portsAttributes": {
+    "25565": {
+      "label": "Minecraft Server Port",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "echo 'Minecraft Server setup complete. Use \"docker logs -f devcontainer\" to view the output or open a terminal to interact with the server.'",
+  "postStartCommand": "echo 'Starting Minecraft server...'",
+  "shutdownAction": "stopContainer"
+}
